@@ -1,11 +1,16 @@
 import { Card } from "@/components/ui/card";
 import communicationImage from "@/assets/mediation-communication.jpg";
 import knowledgeImage from "@/assets/mediation-knowledge.jpg";
+import tvLongImage from "@/assets/mediation-tv-long.jpg";
+import clipsShortImage from "@/assets/mediation-clips-short.jpg";
+import learningDoingImage from "@/assets/mediation-learning-doing.jpg";
+import inspirationPassiveImage from "@/assets/mediation-inspiration-passive.jpg";
 
 interface MediationPair {
   before: string;
   after: string;
-  image?: string;
+  beforeImage?: string;
+  afterImage?: string;
   insight: string;
 }
 
@@ -13,23 +18,29 @@ const mediationPairs: MediationPair[] = [
   {
     before: "Carta manuscrita",
     after: "Mensaje instantáneo",
-    image: communicationImage,
+    beforeImage: communicationImage,
+    afterImage: communicationImage,
     insight: "Cambio en intimidad, ritmo y reflexión en la comunicación personal"
   },
   {
     before: "Enciclopedia en papel",
     after: "Búsqueda web",
-    image: knowledgeImage,
+    beforeImage: knowledgeImage,
+    afterImage: knowledgeImage,
     insight: "De la autoridad centralizada a la información distribuida y verificable"
   },
   {
     before: "Programa TV largo",
     after: "Clips de 1 minuto",
+    beforeImage: tvLongImage,
+    afterImage: clipsShortImage,
     insight: "Atención profunda y sostenida vs. consumo fragmentado y rápido"
   },
   {
     before: "Aprender haciendo",
     after: "Inspiración sin práctica",
+    beforeImage: learningDoingImage,
+    afterImage: inspirationPassiveImage,
     insight: "Conocimiento procedimental vs. contemplación pasiva"
   }
 ];
@@ -51,27 +62,41 @@ export const Mediations = () => {
               key={index}
               className="overflow-hidden hover:shadow-xl transition-all duration-300 card-frosted"
             >
-              {pair.image && (
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={pair.image} 
-                    alt={`${pair.before} vs ${pair.after}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
               <div className="p-6">
-                <div className="flex items-center justify-between mb-4 gap-4">
-                  <div className="flex-1 text-center">
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="text-center">
                     <span className="text-sm font-semibold text-muted-foreground">Antes</span>
-                    <p className="font-display font-semibold text-lg mt-1">{pair.before}</p>
+                    {pair.beforeImage && (
+                      <div className="relative h-32 overflow-hidden rounded-lg mt-2 mb-2">
+                        <img 
+                          src={pair.beforeImage} 
+                          alt={pair.before}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <p className="font-display font-semibold text-lg">{pair.before}</p>
                   </div>
-                  <div className="text-2xl text-primary">→</div>
-                  <div className="flex-1 text-center">
+                  
+                  <div className="text-center">
                     <span className="text-sm font-semibold text-muted-foreground">Ahora</span>
-                    <p className="font-display font-semibold text-lg mt-1">{pair.after}</p>
+                    {pair.afterImage && (
+                      <div className="relative h-32 overflow-hidden rounded-lg mt-2 mb-2">
+                        <img 
+                          src={pair.afterImage} 
+                          alt={pair.after}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <p className="font-display font-semibold text-lg">{pair.after}</p>
                   </div>
                 </div>
+                
+                <div className="flex justify-center mb-4">
+                  <div className="text-2xl text-primary">→</div>
+                </div>
+                
                 <p className="text-sm text-muted-foreground border-t pt-4 border-border/50">
                   {pair.insight}
                 </p>

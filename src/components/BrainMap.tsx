@@ -1,12 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Brain, Eye, Activity, Zap, Ear } from "lucide-react";
+import cerebellumImg from "@/assets/brain-cerebellum.jpg";
+import occipitalImg from "@/assets/brain-occipital.jpg";
+import brainstemImg from "@/assets/brain-brainstem.jpg";
+import frontalImg from "@/assets/brain-frontal.jpg";
+import temporalImg from "@/assets/brain-temporal.jpg";
 
 interface BrainArea {
   icon: React.ReactNode;
   title: string;
   helps: string[];
   hinders: string[];
+  image: string;
 }
 
 const brainAreas: BrainArea[] = [
@@ -21,7 +27,8 @@ const brainAreas: BrainArea[] = [
     hinders: [
       "Consumo pasivo (solo ver/leer)",
       "Sin práctica física para habilidades motrices"
-    ]
+    ],
+    image: cerebellumImg
   },
   {
     icon: <Eye className="w-8 h-8 text-primary" />,
@@ -35,7 +42,8 @@ const brainAreas: BrainArea[] = [
       "Sobrecarga visual",
       "Muros de texto densos",
       "Cortes caóticos en video"
-    ]
+    ],
+    image: occipitalImg
   },
   {
     icon: <Zap className="w-8 h-8 text-primary" />,
@@ -48,7 +56,8 @@ const brainAreas: BrainArea[] = [
     hinders: [
       "Notificaciones constantes → fatiga",
       "Contenidos monótonos → somnolencia"
-    ]
+    ],
+    image: brainstemImg
   },
   {
     icon: <Brain className="w-8 h-8 text-primary" />,
@@ -62,7 +71,8 @@ const brainAreas: BrainArea[] = [
       "Feeds de scroll infinito",
       "Fragmentación constante",
       "Contenido que fomenta impulsividad"
-    ]
+    ],
+    image: frontalImg
   },
   {
     icon: <Ear className="w-8 h-8 text-primary" />,
@@ -76,7 +86,8 @@ const brainAreas: BrainArea[] = [
       "Audio de baja calidad",
       "Ruido de fondo excesivo",
       "Jerga técnica innecesaria"
-    ]
+    ],
+    image: temporalImg
   }
 ];
 
@@ -95,8 +106,16 @@ export const BrainMap = () => {
           {brainAreas.map((area, index) => (
             <Card 
               key={index}
-              className="p-6 hover:shadow-xl transition-all duration-300 card-frosted"
+              className="p-6 hover:shadow-xl transition-all duration-300 card-frosted overflow-hidden"
             >
+              <div className="relative h-48 mb-4 -mx-6 -mt-6">
+                <img 
+                  src={area.image} 
+                  alt={area.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
               <div className="flex items-start gap-4 mb-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   {area.icon}

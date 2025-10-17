@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { ChevronDown } from "lucide-react";
+import aristotleImg from "@/assets/timeline-aristotle.jpg";
+import galenImg from "@/assets/timeline-galen.jpg";
+import vesaliusImg from "@/assets/timeline-vesalius.jpg";
+import willisImg from "@/assets/timeline-willis.jpg";
+import brocaWernickeImg from "@/assets/timeline-broca-wernicke.jpg";
+import golgiCajalImg from "@/assets/timeline-golgi-cajal.jpg";
+import pavlovImg from "@/assets/timeline-pavlov-penfield-hebb.jpg";
+import sperryImg from "@/assets/timeline-sperry-gazzaniga.jpg";
+import mirrorNeuronsImg from "@/assets/timeline-mirror-neurons.jpg";
+import brainInitiativeImg from "@/assets/timeline-brain-initiative.jpg";
 
 interface TimelineItem {
   id: number;
@@ -8,6 +18,7 @@ interface TimelineItem {
   title: string;
   summary: string;
   details: string;
+  image: string;
 }
 
 const timelineData: TimelineItem[] = [
@@ -16,70 +27,80 @@ const timelineData: TimelineItem[] = [
     date: "Antigüedad",
     title: "Aristóteles - Cardiocentrismo",
     summary: "El corazón como sede del pensamiento; el cerebro enfría la sangre.",
-    details: "Propuso que el corazón —no el cerebro— era la sede del pensamiento y la sensación. Creyó que el cerebro enfriaba la sangre. Su influencia perduró en un mundo de tradición oral y manuscrito, donde la autoridad y la memoria guiaban el conocimiento."
+    details: "Propuso que el corazón —no el cerebro— era la sede del pensamiento y la sensación. Creyó que el cerebro enfriaba la sangre. Su influencia perduró en un mundo de tradición oral y manuscrito, donde la autoridad y la memoria guiaban el conocimiento.",
+    image: aristotleImg
   },
   {
     id: 2,
     date: "S. II",
     title: "Galeno - Teoría Ventricular",
     summary: "Espíritus animales en ventrículos; dominio milenario por manuscrito.",
-    details: "Ubicó facultades mentales en los ventrículos; 'espíritus animales' viajaban por nervios huecos. La copia manuscrita preservó su modelo por más de un milenio."
+    details: "Ubicó facultades mentales en los ventrículos; 'espíritus animales' viajaban por nervios huecos. La copia manuscrita preservó su modelo por más de un milenio.",
+    image: galenImg
   },
   {
     id: 3,
     date: "1543",
     title: "Vesalio y la Imprenta",
     summary: "Disecciones humanas + libro ilustrado estandarizan la evidencia visual.",
-    details: "Disecciones humanas + libro ilustrado ('Fabrica') corrigieron errores de Galeno y convirtieron la imagen impresa en nueva autoridad científica."
+    details: "Disecciones humanas + libro ilustrado ('Fabrica') corrigieron errores de Galeno y convirtieron la imagen impresa en nueva autoridad científica.",
+    image: vesaliusImg
   },
   {
     id: 4,
     date: "1664",
     title: "Thomas Willis - Neurología",
     summary: "Consolida 'neurología', correlación clínica-anatomía.",
-    details: "Acuñó 'neurología'; correlación clínica–anatomía, nomenclatura duradera; la monografía impresa consolidó la disciplina."
+    details: "Acuñó 'neurología'; correlación clínica–anatomía, nomenclatura duradera; la monografía impresa consolidó la disciplina.",
+    image: willisImg
   },
   {
     id: 5,
     date: "1861/1874",
     title: "Broca & Wernicke",
     summary: "Localización del lenguaje; revistas científicas aceleran debate.",
-    details: "Casos de afasia revelan áreas específicas del lenguaje; las revistas permiten debate rápido y acumulativo."
+    details: "Casos de afasia revelan áreas específicas del lenguaje; las revistas permiten debate rápido y acumulativo.",
+    image: brocaWernickeImg
   },
   {
     id: 6,
     date: "1873-1906",
     title: "Golgi vs. Cajal",
     summary: "Retícula vs. neurona; dibujos de Cajal como argumento visual decisivo.",
-    details: "De la 'red continua' a la 'neurona' discreta. Los dibujos de Cajal fueron argumentos visuales decisivos; ganó el Nobel junto a Golgi."
+    details: "De la 'red continua' a la 'neurona' discreta. Los dibujos de Cajal fueron argumentos visuales decisivos; ganó el Nobel junto a Golgi.",
+    image: golgiCajalImg
   },
   {
     id: 7,
     date: "1904-1950s",
     title: "Pavlov / Penfield / Hebb",
     summary: "Aprendizaje asociativo; homúnculo cortical; plasticidad sináptica.",
-    details: "Del condicionamiento clásico al homúnculo cortical y la plasticidad sináptica ('cells that fire together, wire together')."
+    details: "Del condicionamiento clásico al homúnculo cortical y la plasticidad sináptica ('cells that fire together, wire together').",
+    image: pavlovImg
   },
   {
     id: 8,
     date: "1960s",
     title: "Sperry & Gazzaniga - Lateralización",
     summary: "Izquierda lógica / derecha creativa moldeado por medios masivos.",
-    details: "Lateralización compleja convertida en dicotomía popular por medios masivos (izquierdo lógico / derecho creativo)."
+    details: "Lateralización compleja convertida en dicotomía popular por medios masivos (izquierdo lógico / derecho creativo).",
+    image: sperryImg
   },
   {
     id: 9,
     date: "1990s-hoy",
     title: "Neuronas Espejo / Conectoma",
     summary: "Empatía, redes cerebrales y diálogo científico en web abierta.",
-    details: "Neuronas espejo, conectoma y neurociencia social. Empatía, redes cerebrales y diálogo científico en la web abierta."
+    details: "Neuronas espejo, conectoma y neurociencia social. Empatía, redes cerebrales y diálogo científico en la web abierta.",
+    image: mirrorNeuronsImg
   },
   {
     id: 10,
     date: "2013-hoy",
     title: "BRAIN & Neuroderechos",
     summary: "Ciencia a gran escala + debate ético público constante.",
-    details: "Iniciativas a gran escala y neuroderechos: ciencia en diálogo público continuo."
+    details: "Iniciativas a gran escala y neuroderechos: ciencia en diálogo público continuo.",
+    image: brainInitiativeImg
   }
 ];
 
@@ -112,9 +133,18 @@ export const Timeline = () => {
                           <h3 className="text-xl font-display font-semibold mt-1 mb-2">{item.title}</h3>
                           <p className="text-muted-foreground">{item.summary}</p>
                           {expandedId === item.id && (
-                            <p className="mt-4 text-sm leading-relaxed border-t pt-4 border-border/50">
-                              {item.details}
-                            </p>
+                            <div className="mt-4 border-t pt-4 border-border/50 space-y-4">
+                              <div className="flex gap-4 items-start">
+                                <p className="text-sm leading-relaxed flex-1">
+                                  {item.details}
+                                </p>
+                                <img 
+                                  src={item.image} 
+                                  alt={item.title}
+                                  className="w-48 h-32 object-cover rounded-lg shadow-md"
+                                />
+                              </div>
+                            </div>
                           )}
                         </div>
                         <ChevronDown 
@@ -144,9 +174,18 @@ export const Timeline = () => {
                           <h3 className="text-xl font-display font-semibold mt-1 mb-2">{item.title}</h3>
                           <p className="text-muted-foreground">{item.summary}</p>
                           {expandedId === item.id && (
-                            <p className="mt-4 text-sm leading-relaxed border-t pt-4 border-border/50">
-                              {item.details}
-                            </p>
+                            <div className="mt-4 border-t pt-4 border-border/50 space-y-4">
+                              <div className="flex gap-4 items-start">
+                                <p className="text-sm leading-relaxed flex-1">
+                                  {item.details}
+                                </p>
+                                <img 
+                                  src={item.image} 
+                                  alt={item.title}
+                                  className="w-48 h-32 object-cover rounded-lg shadow-md"
+                                />
+                              </div>
+                            </div>
                           )}
                         </div>
                         <ChevronDown 
