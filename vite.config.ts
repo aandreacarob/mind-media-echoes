@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // base is required when deploying to GitHub Pages under a repo path
+  base: process.env.GH_PAGES === "1" ? "/mind-media-echoes/" : "/",
   server: {
     host: "::",
     port: 8080,
